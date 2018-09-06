@@ -19,14 +19,5 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
     elixir_box.vm.network :forwarded_port, guest: 4000, host: 4000
     elixir_box.vm.provision :shell, :path => "vagrant_provision.sh"
-
-    config.vm.provision "run",
-                        type: "shell",
-                        privileged: false,
-                        run: "always",
-                        inline: <<-SHELL
-      cd /vagrant
-      mix phx.server
-    SHELL
   end
 end
